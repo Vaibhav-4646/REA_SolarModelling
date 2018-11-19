@@ -36,11 +36,22 @@ v_oc = V_oc / x
 ff = (v_oc - math.log(v_oc + 0.72)) / (v_oc + 1)
 
 eff_init = (V_oc * i_sc * ff) / I_final
-
+print (eff_init)
 eff_dust = 0.93 * eff_init
-
-print (f"Efficiency accounting for avg. effect of dust is {eff_dust}")
+print ("Efficiency accounting for avg. effect of dust is: ")
+print (eff_dust)
 # I'd say do the disintegration thing wrt time on eff_dust, 
 # but depending on what's easier you can put that in whatever loop you use.
 # Not sure how to test this for accuracy without data, 
 # I tried using some piecewise data from diff. studies - it gave me ridiculously high eff. of about 25%
+costPerPanel = float(input("What is the cost per panel for this system?($) "))
+panelArea= float(input("What is the area of each panel?(m^2) "))
+wattProduced = panelArea*I_final*eff_dust
+perWattElectricityCost = 0.1908/wattProduced
+print ("The cost of Electricity per Watt? ")
+print (perWattElectricityCost)
+print ("Solar panel will be recover its cost in ")
+hoursToRecover = costPerPanel/perWattElectricityCost/3600
+print (hoursToRecover)
+print ("hours.")
+#the f thing in print not working... atleast not here.... so abhi lets keep this
